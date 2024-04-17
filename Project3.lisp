@@ -10,15 +10,12 @@
 ;;  (set-member '(1 2) 1) => T
 ;;  (set-member '(1 2) 3) =>  NIL
 
-(defun setmember (a b);replace with 'set item' per the assignment
-  "Check if list A is a subset of list B."
+(defun set-member (set item)
+  "Check if item is a member of set."
   (cond
-    ((null a) t)                           
-    ((null b) nil)                          
-    ((member (car a) b)        
-     (subset-of (cdr a) b))                
-    (t nil))
-  )
+    ((null set) nil)                 
+    ((equal (car set) item) t)       
+    (t (set-member (cdr set) item)))) 
 
 
 

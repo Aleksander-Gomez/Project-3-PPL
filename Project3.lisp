@@ -15,7 +15,18 @@
   (cond
     ((null set) nil)                 
     ((equal (car set) item) t)       
-    (t (set-member (cdr set) item)))) 
+    (t (set-member (cdr set) item))))
+
+;;Test set-member
+(defun set-member-test ()
+  (if (set-member '(1 2 3) 1)
+    (format t "Test passed: (set-member '(1 2 3) 1) => T~%")
+    (format t "Test failed: (set-member '(1 2 3) 1) => T~%")))
+
+;; Load tests with C-c C-k (don't know if this'll work)
+
+;;Run tests
+(set-member-test)
 
 
 
@@ -31,11 +42,11 @@
 
 ;;   (set-union '(1 2) '(2 4)) => '(1 2 4)
 
-(defun set-union (set-1 set-2)
+;;---->(defun set-union (set-1 set-2)
 
   ;;Your implementation go here
 
-)
+;;---->)
 
  
 
@@ -51,11 +62,11 @@
 
 ;;   (set-intersection '(1 2) '(2 4)) => '(2)
 
-(defun set-intersection (set-1 set-2)
+;;---->(defun set-intersection (set-1 set-2)
 
   ;;Your implementation go here
 
-)
+;;---->)
 
 
 
@@ -74,10 +85,57 @@
 ;;   (set-diff '(1 2) '(2 4)) => '(1)
 
 (defun set-diff (set-1 set-2)
+  "Check the difference between two sets"
+  (cond ((null set-1) nil)
+    ((member (car set-1) set-2) (set-difference (cdr set-1) set-2))
+    (t (cons (car set-1) (set-difference (cdr set-1) set-2)))))
 
-  ;;Your implementation go here
+;;Test set-diff
+(defun set-diff-test ()
+  (format t "Test 1: ")
+  (let ((result (set-diff '(1 2 3 4) '(3 4 5))))
+    (if (null result)
+      (format t "No difference found. ~%")
+      (format t "Difference found: ~a~%" result)))
 
-)
+  (format t "Test 2: ")
+  (let ((result (set-diff '(1 2 3) '(1 2 3))))
+    (if (null result)
+      (format t "No difference found. ~%")
+      (format t "Difference found: ~a~%" result)))
+
+  (format t "Test 3: ")
+  (let ((result (set-diff '() '(1 2 3))))
+    (if (null result)
+      (format t "No difference found. ~%")
+      (format t "Difference found: ~a~%" result)))
+
+  (format t "Test 4: ")
+  (let ((result (set-diff '(1 2 3) '())))
+    (if (null result)
+      (format t "No difference found. ~%")
+      (format t "Difference found: ~a~%" result)))
+  
+  (format t "Test 5: ")
+  (let ((result (set-diff '(1 1 2 2 3 3) '(2 3 4))))
+    (if (null result)
+      (format t "No difference found. ~%")
+      (format t "Difference found: ~a~%" result)))
+  
+  (format t "Test 6: ")
+  (let ((result (set-diff '(a b c) '(c d e))))
+    (if (null result)
+      (format t "No difference found. ~%")
+      (format t "Difference found: ~a~%" result)))
+  
+  (format t "Test 4: ")
+  (let ((result (set-diff '(1 2 a b) '(b c 1))))
+    (if (null result)
+      (format t "No difference found. ~%")
+      (format t "Difference found: ~a~%" result))))
+
+;;Run Tests
+(set-diff-test)
 
 
 
@@ -94,10 +152,40 @@
 ;;  (boolean-xor nil nil) => nil
 
 (defun boolean-xor (a b)
+  "Compute the XOR of two boolean values 'a' and 'b'."
+  (cond ((and a b) nil)    ;Both true => false
+    ((or a b) t)           ;Either true => true
+    (t nil)))              ;Both false => false
 
-  ;;Your implementation go here
+;;Test boolean-xor
+(defun boolean-xor-test ()
+  (format t "Test with both inputs true:")
+  (let ((result (boolean-xor t t)))
+    (if result
+      (format t "(boolean-xor t t) => t~%")
+      (format t "(boolean-xor t t) => nil~%")))
 
-)
+  (format t "Test with first input 'true' & second input 'nil':")
+  (let ((result (boolean-xor t nil)))
+    (if result
+      (format t "(boolean-xor t nil) => t~%")
+      (format t "(boolean-xor t nil) => nil~%")))
+  
+  (format t "Test with first input 'nil' & second input 'true':")
+  (let ((result (boolean-xor nil t)))
+    (if result
+      (format t "(boolean-xor nil t) => t~%")
+      (format t "(boolean-xor nil t) => nil~%")))
+
+  (format t "Test with both inputs false:")
+  (let ((result (boolean-xor nil nil)))
+    (if result
+      (format t "(boolean-xor nil nil) => t~%")
+      (format t "(boolean-xor nil nil) => nil~&"))))
+  
+;;Run tests
+(boolean-xor-test)
+  
 
 
 

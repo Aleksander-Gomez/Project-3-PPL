@@ -266,7 +266,20 @@
 ;;  (boolean-eval '(and t (or nil t)) => t
 
 (defun boolean-eval (exp)
+  (cond ((eq exp 't) t)
+        ((eq exp 'nil) nil)
+        ((eq (car exp) 'not) (not (boolean-eval (cadr exp)))) ; NOT function in LISP 
+        ((eq (car exp) 'and) (and (boolean-eval (cadr exp)) (boolean-eval (caddr exp)))) ; AND function in LISP
+        ((eq (car exp) 'or) (or (boolean-eval (cadr exp)) (boolean-eval (caddr exp)))) ; OR function in LISP
+        ((eq (car exp) 'xor) (xor (boolean-eval (cadr exp)) (boolean-eval (cddr exp)))) ; XOR defined
+        ((eq (car exp) 'implies) (implies (boolean-eval (cadr exp)) (boolean-eval (cddr exp)))) ; IMPLIES defined 
+        ((eq (car exp) 'iff) (iff (boolean-eval (cadr exp)) (boolean-eval (caddr exp)))))) ; IFF defined
 
-;;<Your implementation go here >
+(defun xor (a b)
+  (and (or a b) (not (and a b))))
 
-)
+(defun implies (a b)
+  (or (not a) b))
+
+(defun iff (a b)
+  (and (implies a b) (implies b a)))

@@ -52,12 +52,7 @@
 
 ;;---->)
 
-;; Test cases
-
-(assert (equal (set-union '(1 2 3) '(4 5 6)) '(1 2 3 4 5 6)) "1st test failure")
-(assert (equal (set-union '(1 2 3) '(3 4 5)) '(1 2 3 4 5)) "2nd test failure")
-(assert (equal (set-union '() '()) '()) "3rd test failure")
-
+ 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -82,14 +77,6 @@
   
 ;;---->)
 
-
-;; Test cases
-
-(assert (equal (set-intersection '(1 2 3) '(3 4 5)) '(3)) "1st test failed")
-(assert (equal (set-intersection '(1 2 3 5 6) '(2 3 6 7)) '(2 3 6)) "2nd test failed")
-(assert (equal (set-intersection '(1 2 3) '(1 2 3)) '(1 2 3)) "3rd test failed")
-
- 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

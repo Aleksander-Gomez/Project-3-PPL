@@ -1,15 +1,6 @@
 
 
 ;; Return T if item is a member of set.
-
-;; Return NIL if item is not a member of set.
-
-;; The type of set is list.
-
-;; Examples:
-;;  (set-member '(1 2) 1) => T
-;;  (set-member '(1 2) 3) =>  NIL
-
 (defun set-member (set item)
   "Check if item is a member of set."
   (cond
@@ -28,22 +19,9 @@
 ;;Run tests
 (set-member-test)
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the union of set-1 and set-2.
-
-;; The result should contain no duplicates.
-
-;; Assume set-1 contains no duplicates and set-2 contains no duplicates.
-
-;; Examples:
-
-;;   (set-union '(1 2) '(2 4)) => '(1 2 4)
-
-;;---->(defun set-union (set-1 set-2)
-
 (defun set-union (set-1 set-2)
   (COND
     ((NULL? set-1) set-2)
@@ -58,21 +36,9 @@
 (assert (equal (set-union '(1 2 3) '(3 4 5)) '(1 2 3 4 5)) "2nd test failure")
 (assert (equal (set-union '() '()) '()) "3rd test failure")
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the intersection of set-1 and set-2.
-
-;; The result should contain no duplicates.
-
-;; Assume set-1 contains no duplicates and set-2 contains no duplicates.
-
-;; Examples:
-
-;;   (set-intersection '(1 2) '(2 4)) => '(2)
-
-;;---->(defun set-intersection (set-1 set-2)
-
 (defun set-intersection (set-1 set-2)
   (COND
     ((NULL? set-1) set-2)
@@ -89,23 +55,9 @@
 (assert (equal (set-intersection '(1 2 3 5 6) '(2 3 6 7)) '(2 3 6)) "2nd test failed")
 (assert (equal (set-intersection '(1 2 3) '(1 2 3)) '(1 2 3)) "3rd test failed")
 
- 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the difference of set-1 and set-2.
-
-;; The result should contain no duplicates.
-
-;; Assume set-1 contains no duplicates and set-2 contains no duplicates.
-
-;;
-
-;; Examples:
-
-;;   (set-diff '(1 2) '(2 4)) => '(1)
-
 (defun set-diff (set-1 set-2)
   "Check the difference between two sets"
   (cond ((null set-1) nil)
@@ -159,20 +111,9 @@
 ;;Run Tests
 (set-diff-test)
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the exclusive or of a and b
-
-;;
-
-;; Examples:
-
-;;  (boolean-xor t nil) => t
-
-;;  (boolean-xor nil nil) => nil
-
 (defun boolean-xor (a b)
   "Compute the XOR of two boolean values 'a' and 'b'."
   (cond ((and a b) nil)    ;Both true => false
@@ -207,22 +148,10 @@
   
 ;;Run tests
 (boolean-xor-test)
-  
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the implication of a and b
-
-;;
-
-;; Examples:
-
-;;  (boolean-implies t nil) => nil
-
-;;  (boolean-implies nil nil) => t
-
 (defun boolean-implies (a b)
 
 ;;<Your implementation go here >
@@ -233,38 +162,15 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Return the bi-implication (if and only if) of a and b
-
-;;
-
-;; Examples:
-
-;;  (boolean-iff t nil) => nil
-
-;;  (boolean-iff nil nil) => t
-
 (defun boolean-iff (a b)
 
 ;;<Your implementation go here >
 
 )
-
-
-
+  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Evaluate a boolean expression.
-
-;; Handle NOT, AND, OR, XOR, IMPLIES, and IFF.
-
-;;
-
-;; Examples:
-
-;;  (boolean-eval '(and t nil)) => nil
-
-;;  (boolean-eval '(and t (or nil t)) => t
-
 (defun boolean-eval (exp)
   (cond ((eq exp 't) t)
         ((eq exp 'nil) nil)

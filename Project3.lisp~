@@ -1,3 +1,9 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Project 3: Functional Programming, CS3210                        ;;
+;; Authors: Aleks Gomez, Fin Martinez, Jordan Snow, and Kyle Sterner;;
+;; Additional coding assistance provided by ChatGPT                 ;;
+;; Project framework provided by ThienNgo Nguyen Le                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;; Return T if item is a member of set.

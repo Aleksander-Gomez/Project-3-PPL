@@ -179,21 +179,29 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the implication of a and b
-(defun boolean-implies (a b)
+;; (defun boolean-implies (a b)
 
 ;;<Your implementation go here >
 
-)
+(defun boolean-implies (a b)
+;; Check if 'a' implies 'b'
+  (if (and a (not b))           ; If 'a' is true and 'b' is false
+      nil                       ; Return false, as 'a' does not imply 'b'
+      t))                       ; Otherwise, return true, as 'a' implies 'b'
 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Check if both 'a' and 'b' are true or both are false
 (defun boolean-iff (a b)
-
-;;<Your implementation go here >
-
+  (if (and a b)                    ; If both 'a' and 'b' are true
+     t                             ; Return true, as both conditions are met for if and only if
+      (if (and (not a) (not b))    ; If both 'a' and 'b' are false     
+	  t                              ; Return true, as both conditions are met for if and only if
+	  nil)))                         ; Otherwise, return false
 )
+
   
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

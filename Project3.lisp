@@ -27,38 +27,60 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the union of set-1 and set-2.
+
 (defun set-union (set-1 set-2)
   (COND
-    ((NULL? set-1) set-2)
-    ((member (car set-1) set-2) (set-union (cdr set-1) set-2))
+    ((null set-1) set-2)
+    ((null set-2) set-1)
+    ((member (car set-1) set-2)
+     (set-union (cdr set-1) set-2))
     (t (cons (car set-1) (set-union (cdr set-1) set-2)))))
 
 ;;---->)
 
 ;; Test cases
 
-(assert (equal (set-union '(1 2 3) '(4 5 6)) '(1 2 3 4 5 6)) "1st test failure")
-(assert (equal (set-union '(1 2 3) '(3 4 5)) '(1 2 3 4 5)) "2nd test failure")
-(assert (equal (set-union '() '()) '()) "3rd test failure")
+(defun set-union-test ()
+  (let ((set-1 '(1 2 3 4))
+	(set-2 '(3 4 5 6)))
+    (assert (equal (set-union set-1 set-2) '(1 2 3 4 5 6)))
+
+    (let ((set-1 '(1 2 3)
+	  (set-2 '(4 5 6)))
+
+	  (assert (equal (set-union set-1 set-2) '(1 2 3 4 5 6))))
+
+      (let ((set-1 '(1 2 3))
+	    ((set-2 '(1 2 3)))
+	  (assert (equal (set-union set-1 set-2) '(1 2 3))))))
+
+;Run tests
+ (set-union-test)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Return the intersection of set-1 and set-2.
+
 (defun set-intersection (set-1 set-2)
   (COND
-    ((NULL? set-1) set-2)
+    ((null set-1) '())
     ((member (car set-1) set-2)
-     (cons (car set-1) (set-intersection) (cdr set-1) set-2))
-    (t (set-intersection (cdr set-1) set-2)))
-  
+     (cons (car set-1) (set-intersection (cdr set-1) set-2)))
+    (t (set-intersection (cdr set-1) set-2))))
+    
 ;;---->)
 
+(defun set-intersection-test()
+  (let ((set-1 '(1 2 3 4))
+	(set-2 '(2 3 4 5 6)))
+    (assert (equal (set-union set-1 set-2) '(2 3 4)))
 
-;; Test cases
+    (let ((set-1 '(1 2 3))
+	  (set-2 '(4 5 6)))
+      (assert (equal (set-union set-1 set-2) '())))
 
-(assert (equal (set-intersection '(1 2 3) '(3 4 5)) '(3)) "1st test failed")
-(assert (equal (set-intersection '(1 2 3 5 6) '(2 3 6 7)) '(2 3 6)) "2nd test failed")
-(assert (equal (set-intersection '(1 2 3) '(1 2 3)) '(1 2 3)) "3rd test failed")
+;Run tests
+(set-intersection-test)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
